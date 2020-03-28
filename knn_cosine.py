@@ -27,6 +27,8 @@ class KnnCosine(object):
         if torch.cuda.is_available():
             x = x.cuda()
             query = query.cuda()
+        if not loop:
+        	k += 1
         x = F.normalize(x)
         query = F.normalize(query)
         query_result = torch.matmul(x, query.t())
